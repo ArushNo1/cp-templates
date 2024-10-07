@@ -19,7 +19,7 @@ tree_order_statistics_node_update> indexed_set;
 #define all(x) (x).begin(), (x).end()
 #define rall(x) (x).rbegin(), (x).rend()
 #define sz(a) ll((a).size())
-#define MOD ll(1e9+7)
+#define MOD ll(1000000007)
 #define INF ll(2e63-1)
 
 inline void open(const char *fin, const char *fout)
@@ -45,13 +45,6 @@ ostream &operator<<(ostream &os, pair<T, U> &x) {
 	return os;
 }
 
-
-void solve(int num_tc)
-{
-    
-}
-
-
 int main()
 {
     ios::sync_with_stdio(false);
@@ -59,9 +52,26 @@ int main()
 
     ll T = 1;
     cin >> T;
+
+    vector<ll> arr(1e5+5);
+    for(int i = 1; i < arr.size(); i++)
+    {
+        arr[i] = (arr[i-1] + (i/2 - (ll)(i%2 == 0))*2 + MOD) % MOD;
+    }
+
+    for(int i = 0; i < 10; i++) cout << arr[i] << endll;
+    cout << endll;
+
+    vector<ll> psum(arr.size() + 1);
+    for(int i = 0; i < arr.size(); i++)
+    {
+        psum[i+1] = (psum[i] + arr[i]) % MOD;
+    }
+
     for(ll t = 0; t < T; t++)
     {
-        solve(t+1);
+        ll l, r; cin >> l >> r;
+        cout << (psum[r] - psum[l-1] + MOD) % MOD << endll;
     }
 }
 

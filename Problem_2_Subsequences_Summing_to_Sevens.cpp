@@ -48,17 +48,36 @@ ostream &operator<<(ostream &os, pair<T, U> &x) {
 
 void solve(int num_tc)
 {
+	int N; cin >> N;
+    vector<ll> first7(7, -1);
+    ll curSum = 0;
     
+    ll ans = 0;
+    for(int i = 0; i < N; i++)
+    {
+        ll a; cin >> a;
+        curSum += a;
+        
+        if(first7[curSum%7] == -1)
+        {
+            first7[curSum%7] = i;
+        }
+
+        ans = max(ans, i - first7[curSum%7]);
+    }
+
+    cout << ans << endll;
 }
 
 
 int main()
 {
+    open("div7.in", "div7.out");
     ios::sync_with_stdio(false);
     cin.tie(0); cout.tie(0);  
 
     ll T = 1;
-    cin >> T;
+    //cin >> T;
     for(ll t = 0; t < T; t++)
     {
         solve(t+1);

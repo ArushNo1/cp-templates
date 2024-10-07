@@ -46,9 +46,50 @@ ostream &operator<<(ostream &os, pair<T, U> &x) {
 }
 
 
+vector<vector<int>> adjList{};
+vector<int> visited{};
+map<int, int> reps{};
+
+void dfs(int node, int comp)
+{
+    visited[node] = comp;
+    reps[comp] = node;
+    for(int neighbor : adjList[node])
+    {
+        if(!visited[neighbor]) dfs(neighbor, comp);
+    }
+}
+
 void solve(int num_tc)
 {
-    
+	int N, M; cin >> N >> M;
+    adjList.resize(N);
+    visited.resize(N);
+
+    for(int i = 0; i < M; i++)
+    {
+        int u, v; cin >> u >> v;
+        u--; v--;
+        adjList[u].push_back(v);
+        adjList[v].push_back(u);
+    }
+
+    int ans = 0;
+    for(int i = 0; i < N; i++)
+    {
+        if(!visited[i])
+        {
+            ans++;
+            dfs(i, ans);
+        }
+    }
+
+
+    cout << ans-1 << endll;
+    for(int i = 1; i < ans; i++)
+    {
+        cout << reps[i]+1 << " " << reps[i+1]+1 << endll;
+    }
 }
 
 
@@ -58,7 +99,7 @@ int main()
     cin.tie(0); cout.tie(0);  
 
     ll T = 1;
-    cin >> T;
+    //cin >> T;
     for(ll t = 0; t < T; t++)
     {
         solve(t+1);

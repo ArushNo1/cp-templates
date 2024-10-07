@@ -48,7 +48,20 @@ ostream &operator<<(ostream &os, pair<T, U> &x) {
 
 void solve(int num_tc)
 {
-    
+	int N; cin >> N;
+    vector<int> arr(N);
+    for(int i = 0; i < N; i++)
+    {
+        cin >> arr[i];
+    }
+
+    sort(all(arr));
+    ll ans = arr[0];
+    for(int i = 1; i < N; i++)
+    {
+        ans = (ans + arr[i]) / 2;
+    }
+    cout << ans << endll;
 }
 
 

@@ -48,20 +48,70 @@ ostream &operator<<(ostream &os, pair<T, U> &x) {
 
 void solve(int num_tc)
 {
-    
+	ll N, M; cin >> N >> M;
+    vector<pair<ll, ll>> intervals(M);
+    for(int i = 0; i < M; i++)
+    {
+        cin >> intervals[i].first >> intervals[i].second;
+    }
+
+    sort(all(intervals));
+
+    auto isPossible = [&](ll mid)
+    {
+        ll prev = intervals[0].first;
+        ll curInterval = 0;
+        bool possible = true;
+
+        for(ll i = 0; i < N - 1; i++)
+        {
+            ll next = prev + mid;
+            while(next > intervals[curInterval].second && curInterval < M)
+            {
+                curInterval++;
+            }
+
+            if(curInterval == M)
+            {
+                possible = false;
+                break;
+            }
+
+            prev = max(next, intervals[curInterval].first);
+        }
+
+        return possible;
+    };
+
+    ll lo = 1, hi = 2e18;
+    while(hi > lo)
+    {
+        ll mid = lo + (hi - lo) / 2;
+
+        if(!isPossible(mid))
+        {
+            hi = mid;
+        }
+        else 
+        {
+            lo = mid + 1;
+        }
+    }
+
+    cout << hi - 1 << endll;
 }
 
 
 int main()
 {
+    open("socdist.in", "socdist.out");
     ios::sync_with_stdio(false);
     cin.tie(0); cout.tie(0);  
 
     ll T = 1;
-    cin >> T;
+    //cin >> T;
     for(ll t = 0; t < T; t++)
     {
         solve(t+1);
     }
 }
-

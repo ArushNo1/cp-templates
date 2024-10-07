@@ -48,7 +48,38 @@ ostream &operator<<(ostream &os, pair<T, U> &x) {
 
 void solve(int num_tc)
 {
+	int N, M, Q;
+    cin >> N >> M >> Q;
+    vector<int> a(N), b(M);
+    for(int i = 0; i < N; i++)
+    {
+        cin >> a[i];
+    }
+
+    for(int i = 0; i < M; i++)
+    {
+        cin >> b[i];
+    }
+
+    vector<int> invA(N+1);
+    for(int i = 0; i < N; i++)
+    {
+        invA[a[i]] = i;
+    }
     
+    vector<int> state(M+1);
+    for(int i = 0; i < M; i++)
+    {
+        state[i+1] = max(state[i], invA[b[i]] + 1);
+    }
+
+    for(int i = 0; i < Q; i++)
+    {
+        if(invA[b[i]] > state[i])
+        {
+
+        }
+    }
 }
 
 

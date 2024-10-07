@@ -1,0 +1,1 @@
+{"name":"Local: test","url":"/home/taha/cp-templates/test.cpp","tests":[{"id":1728093588852,"input":"4\n2 2\nOD\nDO\n3 3\nOLD\nODO\nDLO\n5 5\nOLOLO\nLDOOD\nDOLLO\nOLODL\nODLOD\n4 4\nDLDL\nLDDL\nDOLL\nLOLO","output":"1\n1\n3\nIMPOSSIBLE"}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"/home/taha/cp-templates/test.cpp","group":"local","local":true}

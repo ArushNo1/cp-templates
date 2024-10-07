@@ -48,17 +48,45 @@ ostream &operator<<(ostream &os, pair<T, U> &x) {
 
 void solve(int num_tc)
 {
-    
+	int N, K; cin >> N >> K;
+    const int MAXN = 1005;
+    vector<vector<int>> psum(MAXN, vector<int>(MAXN));
+
+    for(int i = 0; i < N; i++)
+    {
+        int x1, x2, y1, y2;
+        cin >> x1 >> y1 >> x2 >> y2;
+        x1++, x2++, y1++, y2++;
+        //psum[i][j] = psum[i-1][j] + psum[i][j-1] - psum[i-1][j-1] + arr[i][j]
+
+        psum[x1][y1]++;
+        psum[x1][y2]--;
+        psum[x2][y1]--;
+        psum[x2][y2]++;
+    }
+
+    ll ans = 0;
+    for(int i = 1; i < MAXN; i++)
+    {
+        for(int j = 1; j < MAXN; j++)
+        {
+            psum[i][j] += psum[i-1][j] + psum[i][j-1] - psum[i-1][j-1];
+            ans += psum[i][j] == K;
+        }
+    }
+
+    cout << ans << endll;
 }
 
 
 int main()
 {
+    open("paintbarn.in", "paintbarn.out");
     ios::sync_with_stdio(false);
     cin.tie(0); cout.tie(0);  
 
     ll T = 1;
-    cin >> T;
+    //cin >> T;
     for(ll t = 0; t < T; t++)
     {
         solve(t+1);

@@ -48,7 +48,31 @@ ostream &operator<<(ostream &os, pair<T, U> &x) {
 
 void solve(int num_tc)
 {
-    
+	int N, X; cin >> N >> X;
+    map<int, int> counter{};
+    for(int i = 0; i < N; i++)
+    {
+        int a; cin >> a;
+        counter[a]++;
+    }
+
+    map<int, int> mods{};
+    for(int mex = 0; mex <= N+2; mex++)
+    {
+        if(!counter[mex] && !mods[mex % X])
+        {
+            cout << mex << endll;
+            return;
+        }
+
+        if(!counter[mex])
+        {
+            counter[mex]++;
+            mods[mex%X]--;
+        }
+
+        mods[mex%X] += counter[mex] - 1; 
+    }
 }
 
 

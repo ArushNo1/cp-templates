@@ -45,10 +45,28 @@ ostream &operator<<(ostream &os, pair<T, U> &x) {
 	return os;
 }
 
+ll query(ll n, ll k)
+{
+    ll start = 1, end = n-k+1;
+    ll num = n/k;
+
+    return (num*(start+end))/2;
+}
+
 
 void solve(int num_tc)
 {
-    
+    ll N; cin >> N;
+    set<ll> ans{};
+    for(ll i = 1; i*i <= N; i++)
+    {
+        if(N%i != 0) continue;
+        ll a = i, b = N/i;
+        ans.insert(query(N, a));
+        ans.insert(query(N, b));
+    }
+
+    for(ll i : ans) cout << i << " ";
 }
 
 
@@ -58,7 +76,7 @@ int main()
     cin.tie(0); cout.tie(0);  
 
     ll T = 1;
-    cin >> T;
+    //cin >> T;
     for(ll t = 0; t < T; t++)
     {
         solve(t+1);

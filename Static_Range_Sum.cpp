@@ -48,7 +48,25 @@ ostream &operator<<(ostream &os, pair<T, U> &x) {
 
 void solve(int num_tc)
 {
-    
+    int N, Q; cin >> N >> Q;
+    vector<ll> arr(N);
+
+    for(int i = 0; i < N; i++)
+    {
+        cin >> arr[i];
+    }
+
+    vector<ll> pref(N+1);
+    for(int i = 0; i < N; i++)
+    {
+        pref[i+1] = pref[i] + arr[i];
+    }
+
+    for(int q = 0; q < Q; q++)
+    {
+        ll l, r; cin >> l >> r;
+        cout << pref[r] - pref[l] << endll;
+    }
 }
 
 
@@ -58,10 +76,9 @@ int main()
     cin.tie(0); cout.tie(0);  
 
     ll T = 1;
-    cin >> T;
+    //cin >> T;
     for(ll t = 0; t < T; t++)
     {
         solve(t+1);
     }
 }
-

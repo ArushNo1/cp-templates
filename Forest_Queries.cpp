@@ -48,7 +48,31 @@ ostream &operator<<(ostream &os, pair<T, U> &x) {
 
 void solve(int num_tc)
 {
-    
+	ll N, Q; cin >> N >> Q;
+
+    vector<vector<int>> grid(N+1, vector<int>(N+1));
+    for(int i = 0; i < N; i++)
+    {
+        string s; cin >> s;
+        for(int j = 0; j < N; j++)
+        {
+            grid[i+1][j+1] = s[j] == '*';
+        }
+    }
+
+    for(int i = 0; i < N; i++)
+    {
+        for(int j = 0; j < N; j++)
+        {
+            grid[i+1][j+1] += grid[i+1][j] + grid[i][j+1] - grid[i][j];
+        }
+    }
+
+    for(int q = 0; q < Q; q++)
+    {
+        int x1, y1, x2, y2; cin >> x1 >> y1 >> x2 >> y2;
+        cout << grid[x2][y2] - grid[x1-1][y2] - grid[x2][y1-1] + grid[x1-1][y1-1] << endll;
+    }
 }
 
 
@@ -58,7 +82,7 @@ int main()
     cin.tie(0); cout.tie(0);  
 
     ll T = 1;
-    cin >> T;
+    //cin >> T;
     for(ll t = 0; t < T; t++)
     {
         solve(t+1);

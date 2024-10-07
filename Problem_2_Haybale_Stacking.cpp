@@ -48,17 +48,32 @@ ostream &operator<<(ostream &os, pair<T, U> &x) {
 
 void solve(int num_tc)
 {
-    
+	int N, K; cin >> N >> K;
+    vector<int> arr(N+1);
+
+    for(int i = 0; i < K; i++)
+    {
+        int l, r; cin >> l >> r;
+        l--; r--;
+        arr[l]++;
+        arr[r+1]--;
+    }
+
+    for(int i = 0; i < N; i++) arr[i] += arr[i-1];
+
+    sort(all(arr));
+    cout << arr[N/2+1] << endll;
 }
 
 
 int main()
 {
+    open("stacking.in", "stacking.out");
     ios::sync_with_stdio(false);
     cin.tie(0); cout.tie(0);  
 
     ll T = 1;
-    cin >> T;
+    //cin >> T;
     for(ll t = 0; t < T; t++)
     {
         solve(t+1);
