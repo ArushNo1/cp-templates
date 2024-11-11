@@ -58,7 +58,7 @@ int main()
     cin.tie(0); cout.tie(0);  
 
     ll T = 1;
-    cin >> T;
+    //cin >> T;
     for(ll t = 0; t < T; t++)
     {
         solve(t+1);

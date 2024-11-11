@@ -48,16 +48,51 @@ ostream &operator<<(ostream &os, pair<T, U> &x) {
 
 void solve(int num_tc)
 {
-    int N; cin >> N;
-    ll ans = -1e18, cur = 0;
+    ll N; cin >> N;
+    vector<ll> arr(N);
+    for(int i = 0; i < N; i++) cin >> arr[i];
+
+    ll sum = accumulate(all(arr), 0ll);
+
+    ll maxInd = 0;
     for(int i = 0; i < N; i++)
     {
-        ll a; cin >> a;
-        cur = max(a, cur + a);
-        ans = max(cur, ans);
+        if(arr[i] > arr[maxInd]) maxInd = i;
     }
-    
-    cout << ans << endll;
+
+    auto appears = [&](ll x) {
+        ll cur = sum + x;
+        arr[maxInd] += x;
+        ll count = 0;
+        for(auto i : arr)
+        {
+            if(2*i*N < cur) count++;
+        }
+        arr[maxInd] -= x;
+        return count*2 > N;
+    };
+
+    if(!appears(1e18))
+    {
+        cout << -1 << endll;
+        return;
+    }
+
+    ll hi = 1e18, lo = 0;
+    while(hi > lo)
+    {
+        ll mid = (hi+lo)/2;
+        if(appears(mid))
+        {
+            hi = mid;
+        }
+        else 
+        {
+            lo = mid + 1;
+        }
+    }
+
+    cout << hi << endll;
 }
 
 
@@ -67,7 +102,7 @@ int main()
     cin.tie(0); cout.tie(0);  
 
     ll T = 1;
-    //cin >> T;
+    cin >> T;
     for(ll t = 0; t < T; t++)
     {
         solve(t+1);

@@ -45,19 +45,59 @@ ostream &operator<<(ostream &os, pair<T, U> &x) {
 	return os;
 }
 
+vector<vector<pair<int, int>>> allPaths{};
+
+int xDirs[] = {0, 0, 1, -1};
+int yDirs[] = {1, -1, 0, 0};
+
+void generatePaths(vector<pair<int, int>> cur)
+{
+    if(cur.size() == 49)
+    {
+        if(cur.back().first == 0 && cur.back().second == 7) allPaths.push_back(cur);
+        return;
+    }
+
+    if(cur.back().first == 0 && cur.back().second == 7) return;
+
+    vector<bool> toTravel(4, false);
+
+    for(int i = 0; i < 4; i++)
+    {
+        int x = cur.back().first + xDirs[i];
+        int y = cur.back().second + yDirs[i];
+        if(x < 0 || y < 0 || x > 7 || y > 7) continue;
+        if(count(all(cur), make_pair(x, y))) continue;
+
+        toTravel[i] = true;
+    }
+
+    if(!toTravel[0] && !toTravel[1] && toTravel[2] && toTravel[3])
+    {
+        return;
+    }
+
+    if(!toTravel[0] && !toTravel[1] && toTravel[2] && toTravel[3])
+    {
+        return;
+    }
+    
+    for(int i = 0; i < 4; i++)
+    {
+        int x = cur.back().first + xDirs[i];
+        int y = cur.back().second + yDirs[i];
+        if(toTravel[i])
+        {
+            cur.push_back({x, y});
+            generatePaths(cur);
+            cur.pop_back();
+        }
+    }
+}
 
 void solve(int num_tc)
 {
-    int N; cin >> N;
-    ll ans = -1e18, cur = 0;
-    for(int i = 0; i < N; i++)
-    {
-        ll a; cin >> a;
-        cur = max(a, cur + a);
-        ans = max(cur, ans);
-    }
-    
-    cout << ans << endll;
+    generatePaths({{0, 0}});
 }
 
 

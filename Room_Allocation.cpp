@@ -32,8 +32,9 @@ inline void open(const char *fin, const char *fout)
 
 template <typename T> ostream &operator<<(ostream &os, vector<T> &arr) {
 	os << "[";
+    cerr << endll;
 	for (T &x : arr) {
-		os << x << " ";
+		os << x.first << ", " << x.second << endll;
 	}
 	os << "]";
 	return os;
@@ -49,15 +50,46 @@ ostream &operator<<(ostream &os, pair<T, U> &x) {
 void solve(int num_tc)
 {
     int N; cin >> N;
-    ll ans = -1e18, cur = 0;
+    vector<pair<int, int>> entries{};
     for(int i = 0; i < N; i++)
     {
-        ll a; cin >> a;
-        cur = max(a, cur + a);
-        ans = max(cur, ans);
+        int a, b; cin >> a >> b;
+        entries.push_back({a, -(i+1)});
+        entries.push_back({b, +(i+1)});
     }
-    
-    cout << ans << endll;
+
+    sort(all(entries));
+
+    vector<int> ans(N);
+    set<int> unused{};
+    int nextRoom = 1;
+
+    for(int i = 0; i < entries.size(); i++)
+    {
+        if(entries[i].second < 0)
+        {
+            if(unused.size() < 1)
+            {
+                unused.insert(nextRoom);
+                nextRoom++;
+            }
+
+            int cur = *unused.begin();
+            unused.erase(cur);
+
+            ans[-1*(entries[i].second + 1)] = cur;
+        }
+        else 
+        {
+            unused.insert(ans[entries[i].second - 1]);
+        }
+    }
+
+    cout << nextRoom - 1 << endll;
+    for(int i = 0; i < N; i++)
+    {
+        cout << ans[i] << " ";
+    }
 }
 
 

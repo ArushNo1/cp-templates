@@ -3,6 +3,7 @@ Author: taha-r
 Bismillah
 */
 
+#include <algorithm>
 #pragma GCC optimize("Ofast")
 #include <bits/stdc++.h>
 #include <ext/pb_ds/assoc_container.hpp>
@@ -48,18 +49,35 @@ ostream &operator<<(ostream &os, pair<T, U> &x) {
 
 void solve(int num_tc)
 {
-    int N; cin >> N;
-    ll ans = -1e18, cur = 0;
-    for(int i = 0; i < N; i++)
+    vector<string> grid(8);
+
+    for(int i = 0; i < 8; i++)
     {
-        ll a; cin >> a;
-        cur = max(a, cur + a);
-        ans = max(cur, ans);
+        cin >> grid[i];
     }
-    
+
+    vector<int> order{1, 2, 3, 4, 5, 6, 7, 8};
+    ll ans = 0;
+    do
+    {
+        set<int> a{}, b{};
+        for(int i = 0; i < 8; i++)
+        {
+            int c = order[i] - 1;
+            if(grid[i][c] == '*') 
+            {
+                break;
+            }
+
+            a.insert(c-i);
+            b.insert(c+i);
+        }
+
+        ans += a.size() == 8 && b.size() == 8;
+    } while (next_permutation(all(order)));
+
     cout << ans << endll;
 }
-
 
 int main()
 {

@@ -48,16 +48,40 @@ ostream &operator<<(ostream &os, pair<T, U> &x) {
 
 void solve(int num_tc)
 {
-    int N; cin >> N;
-    ll ans = -1e18, cur = 0;
+    ll N, T; cin >> N >> T;
+    vector<ll> arr(N);
     for(int i = 0; i < N; i++)
     {
-        ll a; cin >> a;
-        cur = max(a, cur + a);
-        ans = max(cur, ans);
+        cin >> arr[i];
     }
-    
-    cout << ans << endll;
+
+    auto possible = [&](ll t)
+    {
+        ll ans = 0;
+        for(int i = 0; i < N; i++)
+        {
+            ans += t/arr[i];
+            if(ans >= T) return true;
+        }
+
+        return false;
+    };
+
+    ll hi = 1e18, lo = 1;
+    while(hi > lo)
+    {
+        ll mid = (hi+lo)/2;
+        if(!possible(mid))
+        {
+            lo = mid + 1;
+        }
+        else 
+        {
+            hi = mid;
+        }
+    }
+
+    cout << lo << endll;
 }
 
 

@@ -49,20 +49,27 @@ ostream &operator<<(ostream &os, pair<T, U> &x) {
 void solve(int num_tc)
 {
     int N; cin >> N;
-    ll ans = -1e18, cur = 0;
+    vector<pair<int, int>> entries(N);
     for(int i = 0; i < N; i++)
     {
-        ll a; cin >> a;
-        cur = max(a, cur + a);
-        ans = max(cur, ans);
+        cin >> entries[i].first;
+        entries[i].second = i;
     }
-    
-    cout << ans << endll;
+
+    sort(all(entries));
+
+    int ans = 0;
+    for(int i = 0; i < N; i++)
+    {
+        ans = max(ans, abs(entries[i].second - i));
+    }
+    cout << ans + 1 << endll;
 }
 
 
 int main()
 {
+    open("sort.in", "sort.out");
     ios::sync_with_stdio(false);
     cin.tie(0); cout.tie(0);  
 

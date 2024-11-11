@@ -49,20 +49,33 @@ ostream &operator<<(ostream &os, pair<T, U> &x) {
 void solve(int num_tc)
 {
     int N; cin >> N;
-    ll ans = -1e18, cur = 0;
+    map<ll, ll> sizes{};
     for(int i = 0; i < N; i++)
     {
-        ll a; cin >> a;
-        cur = max(a, cur + a);
-        ans = max(cur, ans);
+        int a, b; cin >> a >> b;
+        sizes[b] += a;
     }
-    
+
+    ll ans = 0;
+    while(sizes.size() > 1)
+    {
+        ll a = min(sizes.rbegin()->second, sizes.begin()->second);
+        ans = max(ans, (ll)sizes.rbegin()->first + sizes.begin()->first);
+        sizes.rbegin()->second -= a;
+        sizes.begin()->second -= a;
+        if(sizes.rbegin()->second == 0) sizes.erase(--sizes.end());
+        if(sizes.begin()->second == 0) sizes.erase(sizes.begin());
+    }
+
+    if(sizes.size() == 1) ans = max(ans, 2*sizes.begin()->first);
+
     cout << ans << endll;
 }
 
 
 int main()
 {
+    open("pairup.in", "pairup.out");
     ios::sync_with_stdio(false);
     cin.tie(0); cout.tie(0);  
 

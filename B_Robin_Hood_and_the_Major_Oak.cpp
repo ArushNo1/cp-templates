@@ -48,16 +48,30 @@ ostream &operator<<(ostream &os, pair<T, U> &x) {
 
 void solve(int num_tc)
 {
-    int N; cin >> N;
-    ll ans = -1e18, cur = 0;
-    for(int i = 0; i < N; i++)
+    ll N, K; cin >> N >> K;
+    K--;
+    if(N%2==1)
     {
-        ll a; cin >> a;
-        cur = max(a, cur + a);
-        ans = max(cur, ans);
+        if(K%4 <= 1)
+        {
+            cout << "NO" << endll;
+        }
+        else 
+        {
+            cout << "YES" << endll;
+        }
     }
-    
-    cout << ans << endll;
+    else 
+    {
+        if((K+3)%4 <= 1)
+        {
+            cout << "NO" << endll;
+        }
+        else 
+        {
+            cout << "YES" << endll;
+        }
+    }
 }
 
 
@@ -67,7 +81,7 @@ int main()
     cin.tie(0); cout.tie(0);  
 
     ll T = 1;
-    //cin >> T;
+    cin >> T;
     for(ll t = 0; t < T; t++)
     {
         solve(t+1);

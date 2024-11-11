@@ -49,14 +49,31 @@ ostream &operator<<(ostream &os, pair<T, U> &x) {
 void solve(int num_tc)
 {
     int N; cin >> N;
-    ll ans = -1e18, cur = 0;
+    vector<int> arr(N);
     for(int i = 0; i < N; i++)
     {
-        ll a; cin >> a;
-        cur = max(a, cur + a);
-        ans = max(cur, ans);
+        cin >> arr[i];
     }
-    
+
+    ll ans = 1e18;
+
+    for(int bm = 0; bm < (1 << N); bm++)
+    {
+        ll sumA = 0, sumB = 0;
+        for(int i = 0; i < N; i++)
+        {
+            if(bm & (1 << i))
+            {
+                sumA += arr[i];
+            }
+            else
+            {
+                sumB += arr[i];
+            }
+        }
+        ans = min(ans, abs(sumA - sumB));
+    }
+
     cout << ans << endll;
 }
 

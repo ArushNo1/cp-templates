@@ -48,15 +48,10 @@ ostream &operator<<(ostream &os, pair<T, U> &x) {
 
 void solve(int num_tc)
 {
-    int N; cin >> N;
-    ll ans = -1e18, cur = 0;
-    for(int i = 0; i < N; i++)
-    {
-        ll a; cin >> a;
-        cur = max(a, cur + a);
-        ans = max(cur, ans);
-    }
-    
+    ll N, M, R, C; cin >> N >> M >> R >> C;
+    ll ans = 0;
+    ans += (M-1)*(N-R);
+    ans += (N-1)*M + M - ((R-1)*M + C);
     cout << ans << endll;
 }
 
@@ -67,7 +62,7 @@ int main()
     cin.tie(0); cout.tie(0);  
 
     ll T = 1;
-    //cin >> T;
+    cin >> T;
     for(ll t = 0; t < T; t++)
     {
         solve(t+1);

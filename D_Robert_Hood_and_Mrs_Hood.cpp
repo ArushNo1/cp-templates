@@ -12,7 +12,7 @@ using namespace std;
 
 typedef long long ll;
 typedef long double ld;
-typedef tree<ll,null_type,less<ll>,rb_tree_tag,
+typedef tree<ll,null_type,less_equal<ll>,rb_tree_tag,
 tree_order_statistics_node_update> indexed_set;
 
 #define endll '\n'
@@ -48,16 +48,39 @@ ostream &operator<<(ostream &os, pair<T, U> &x) {
 
 void solve(int num_tc)
 {
-    int N; cin >> N;
-    ll ans = -1e18, cur = 0;
-    for(int i = 0; i < N; i++)
+    int N, D, K; 
+    cin >> N >> D >> K;
+    indexed_set starts, ends;
+    //dbg(num_tc);
+
+    for(int i = 0; i < K; i++)
     {
-        ll a; cin >> a;
-        cur = max(a, cur + a);
-        ans = max(cur, ans);
+        int l, r; cin >> l >> r;
+        starts.insert(l);
+        ends.insert(r);
     }
-    
-    cout << ans << endll;
+
+    int a1 = 1e9, a2 = 0;
+    int ans1 = 0, ans2 = 0;
+
+    for(int i = N; i >= D; i--)
+    {
+        int start = i-D+1, end = i;
+        int startsBeforeEnd = starts.order_of_key(end+1);
+        int endsBeforeStart = ends.order_of_key(start);
+        //dbg(start);
+        //dbg(end);
+        //dbg(startsBeforeEnd);
+        //dbg(endsBeforeStart);
+
+        a1 = min(a1, startsBeforeEnd - endsBeforeStart);
+        if(a1 == startsBeforeEnd - endsBeforeStart) ans1 = start;
+
+        a2 = max(a2, startsBeforeEnd - endsBeforeStart);
+        if(a2 == startsBeforeEnd - endsBeforeStart) ans2 = start;
+    }
+
+    cout << ans2 << " " << ans1 << endll;
 }
 
 
@@ -67,7 +90,7 @@ int main()
     cin.tie(0); cout.tie(0);  
 
     ll T = 1;
-    //cin >> T;
+    cin >> T;
     for(ll t = 0; t < T; t++)
     {
         solve(t+1);

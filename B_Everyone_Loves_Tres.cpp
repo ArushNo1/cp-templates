@@ -45,19 +45,24 @@ ostream &operator<<(ostream &os, pair<T, U> &x) {
 	return os;
 }
 
+string mult(string s, int k) {
+    string out = "";
+    for(int i = 0; i < k; i++) out += s;
+    return out;
+}
 
 void solve(int num_tc)
 {
     int N; cin >> N;
-    ll ans = -1e18, cur = 0;
-    for(int i = 0; i < N; i++)
+    if(N%2==0)
     {
-        ll a; cin >> a;
-        cur = max(a, cur + a);
-        ans = max(cur, ans);
+        cout << mult("3", N-2) << "66" << endll;
     }
-    
-    cout << ans << endll;
+    else 
+    {
+        if(N == 3 || N == 1) cout << -1 << endll;
+        else cout << mult("3", N-4) << "6366" << endll;
+    }
 }
 
 
@@ -67,7 +72,7 @@ int main()
     cin.tie(0); cout.tie(0);  
 
     ll T = 1;
-    //cin >> T;
+    cin >> T;
     for(ll t = 0; t < T; t++)
     {
         solve(t+1);

@@ -48,15 +48,27 @@ ostream &operator<<(ostream &os, pair<T, U> &x) {
 
 void solve(int num_tc)
 {
-    int N; cin >> N;
-    ll ans = -1e18, cur = 0;
+    int N, M, K; cin >> N >> M >> K;
+    vector<int> a(N), b(M);
+    for(int i = 0; i < N; i++) cin >> a[i];
+    for(int i = 0; i < M; i++) cin >> b[i];
+
+    sort(all(a));
+    sort(all(b));
+
+    int bPtr = 0;
+    int ans = 0;
     for(int i = 0; i < N; i++)
     {
-        ll a; cin >> a;
-        cur = max(a, cur + a);
-        ans = max(cur, ans);
+        while(bPtr < M && b[bPtr] < a[i] - K) bPtr++;
+
+        if(bPtr < M && b[bPtr] <= a[i] + K)
+        {
+            ans++;
+            bPtr++;
+        }
     }
-    
+
     cout << ans << endll;
 }
 

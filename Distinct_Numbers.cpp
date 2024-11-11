@@ -49,15 +49,14 @@ ostream &operator<<(ostream &os, pair<T, U> &x) {
 void solve(int num_tc)
 {
     int N; cin >> N;
-    ll ans = -1e18, cur = 0;
-    for(int i = 0; i < N; i++)
+    set<int> ans{};
+    for(int i = 0; i < N; i++ )
     {
-        ll a; cin >> a;
-        cur = max(a, cur + a);
-        ans = max(cur, ans);
+        int a; cin >> a;
+        ans.insert(a);
     }
-    
-    cout << ans << endll;
+
+    cout << ans.size() <<endll;
 }
 
 

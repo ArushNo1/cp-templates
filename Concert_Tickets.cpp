@@ -48,16 +48,27 @@ ostream &operator<<(ostream &os, pair<T, U> &x) {
 
 void solve(int num_tc)
 {
-    int N; cin >> N;
-    ll ans = -1e18, cur = 0;
-    for(int i = 0; i < N; i++)
+    int N, M; cin >> N >> M;
+
+    multiset<int> tickets{};
+    for(int i = 0; i < N; i++) 
     {
-        ll a; cin >> a;
-        cur = max(a, cur + a);
-        ans = max(cur, ans);
+        int a; cin >> a;
+        tickets.insert(a);
     }
     
-    cout << ans << endll;
+    for(int i = 0; i < M; i++)
+    {
+        int a; cin >> a;
+        auto ub = tickets.upper_bound(a);
+        if(ub == tickets.begin()) cout << -1 << endll;
+        else
+        {
+            ub--;
+            cout << *ub << endll;
+            tickets.erase(ub);
+        }
+    }
 }
 
 

@@ -49,15 +49,19 @@ ostream &operator<<(ostream &os, pair<T, U> &x) {
 void solve(int num_tc)
 {
     int N; cin >> N;
-    ll ans = -1e18, cur = 0;
+    multiset<int> towers{};
     for(int i = 0; i < N; i++)
     {
-        ll a; cin >> a;
-        cur = max(a, cur + a);
-        ans = max(cur, ans);
+        int a; cin >> a;
+        auto ub = towers.upper_bound(a);
+        if(ub != towers.end())
+        {
+            towers.erase(ub);
+        }
+        towers.insert(a);
     }
-    
-    cout << ans << endll;
+
+    cout << towers.size() << endll;
 }
 
 

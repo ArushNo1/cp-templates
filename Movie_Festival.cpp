@@ -49,14 +49,23 @@ ostream &operator<<(ostream &os, pair<T, U> &x) {
 void solve(int num_tc)
 {
     int N; cin >> N;
-    ll ans = -1e18, cur = 0;
+    vector<pair<int, int>> movies{};
     for(int i = 0; i < N; i++)
     {
-        ll a; cin >> a;
-        cur = max(a, cur + a);
-        ans = max(cur, ans);
+        int a, b; cin >> a >> b;
+        movies.push_back({b, a});
     }
-    
+
+    sort(all(movies));
+    int cur = 0, ans = 0;
+    for(int i = 0; i < N; i++)
+    {
+        if(movies[i].second < cur) continue;
+
+        ans++;
+        cur = movies[i].first;
+    }
+
     cout << ans << endll;
 }
 

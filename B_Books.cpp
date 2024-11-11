@@ -48,15 +48,44 @@ ostream &operator<<(ostream &os, pair<T, U> &x) {
 
 void solve(int num_tc)
 {
-    int N; cin >> N;
-    ll ans = -1e18, cur = 0;
+    int N, T; cin >> N >> T;
+    vector<int> arr(N);
+    for(int i = 0; i < N; i++) 
+    {
+        cin >> arr[i];
+    }
+
+    vector<int> psum(N+1);
     for(int i = 0; i < N; i++)
     {
-        ll a; cin >> a;
-        cur = max(a, cur + a);
-        ans = max(cur, ans);
+        psum[i+1] = psum[i] + arr[i];
     }
-    
+
+    psum.push_back(psum.back());
+
+    int ans = 0;
+
+    for(int i = 0; i < N; i++)
+    {
+        int hi = N, lo = i;
+        while(lo < hi)
+        {
+            int mid = (hi + lo) / 2;
+            if(psum[mid+1] - psum[i] <= T)
+            {
+                lo = mid + 1;
+            }
+            else
+            {
+                hi = mid;
+            }
+        }
+
+        //dbg(i);
+        //dbg(hi);
+        ans = max(ans, hi - i);
+    }
+
     cout << ans << endll;
 }
 
