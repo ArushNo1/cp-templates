@@ -1,3 +1,6 @@
+#include <ext/pb_ds/assoc_container.hpp>
+using namespace __gnu_pbds;
+
 typedef vector<int> vi;
 typedef vector<vi> vvi;
 typedef pair<int, int> ii;
@@ -9,10 +12,5 @@ typedef long double ld;
 typedef pair<ll, ll> pll;
 typedef vector<bool> vb;
 
-#define endll '\n'
-#define all(x) (x).begin(), (x).end()
-#define MOD ll(1e9+7)
-#define inf int(2e31-1)
-#define INF ll(2e63-1)
-#define EPS ld(1e-9)
-#define dbg(x) cerr << __LINE__ << ": " << #x << "=" << x << endll;
+typedef tree<int,null_type,less<int>,rb_tree_tag,
+tree_order_statistics_node_update> indexed_set;
