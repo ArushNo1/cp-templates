@@ -1,4 +1,3 @@
-
 ll invMod(ll x) {
   if (x <= 1) {
     return x;
