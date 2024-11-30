@@ -44,5 +44,5 @@ ll exactBinomial(ll n, ll k) {
 }
 
 long long binomial(ll n, ll k) {
-    return factorial[n] * inverse(factorial[k] * factorial[n - k] % m) % m;
+    return factorial[n] * invMod(factorial[k] * factorial[n - k] % MOD) % MOD;
 }
