@@ -6,10 +6,6 @@
 using namespace __gnu_pbds;
 using namespace std;
 
-typedef vector<int> vi;
-typedef vector<vi> vvi;
-typedef pair<int, int> ii;
-typedef vector<ii> vii;
 typedef long long ll;
 typedef vector<ll> vll;
 typedef vector<vll> vvll;
@@ -95,10 +91,10 @@ inline void open(string name){
 
 void solve(int num_tc)
 {
-
+    
 }
 
-int main()
+int32_t main()
 {
     ios::sync_with_stdio(false);
     cin.tie(0); cout.tie(0);  
