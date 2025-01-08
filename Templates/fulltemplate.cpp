@@ -51,11 +51,12 @@ inline void open(string name){
 	freopen((name + ".out").c_str(), "w", stdout);
 }
 
-//uncomment to disable debugging
-//#define dbg(x)
+//comment to enable debugging
+#define dbg(x)
 
 #ifndef dbg
 #define dbg(x) cerr << __LINE__ << ": " << #x << "=" << x << endl;
+//edit for specific DS
 #include <alldebug.h>
 #endif
 
