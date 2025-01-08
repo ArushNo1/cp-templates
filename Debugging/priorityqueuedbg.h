@@ -1,3 +1,6 @@
+#ifndef PQUEUEDBG_H
+#define PQUEUEDBG_H
+
 template <typename T, typename U, typename V>
 std::ostream& operator<<(std::ostream& os, const std::priority_queue<T, U, V>& pq) {
     std::priority_queue<T, U, V> copy = pq;
@@ -12,3 +15,5 @@ std::ostream& operator<<(std::ostream& os, const std::priority_queue<T, U, V>& p
     os << "]";
     return os;
 }
+
+#endif
