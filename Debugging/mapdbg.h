@@ -8,7 +8,7 @@
 template <typename T, typename U>
 ostream& operator<< (ostream& os, const map<T, U>& arr){
 	os << "{\n";
-    for(const pair<T,U>& x : arr){
+    for(const pair<T,U> x : arr){
 		os << "    " << x << endll;
 	}
 	os << "}";
