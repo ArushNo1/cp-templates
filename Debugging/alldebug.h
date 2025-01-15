@@ -17,4 +17,8 @@
 #include "vectordbg.h"
 #endif
 
+#ifndef PQUEUEDBG_H
+#include "priorityqueuedbg.h"
+#endif
+
 #endif // ALLDEBUG_H

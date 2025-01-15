@@ -16,4 +16,19 @@ std::ostream& operator<<(std::ostream& os, const std::priority_queue<T, U, V>& p
     return os;
 }
 
+template <typename T>
+std::ostream& operator<<(std::ostream& os, const std::stack<T>& st) {
+    std::stack<T> copy = st;
+    os << "[";
+    bool first = true;
+    while (!copy.empty()) {
+        if (!first) os << ", ";
+        os << copy.top();
+        copy.pop();
+        first = false;
+    }
+    os << "]";
+    return os;
+}
+
 #endif
