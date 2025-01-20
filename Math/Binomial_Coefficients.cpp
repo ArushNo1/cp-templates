@@ -76,7 +76,7 @@ generates all factorials up to size to calculate future binomials in O(1)
 modulo mod
 */
 template<typename T>
-T binom(T n, T k, std::vector<T>& fact, std::vector<T>& invfact, T mod, T size=n){
+T binom(T n, T k, std::vector<T>& fact, std::vector<T>& invfact, T mod, T size = 3e5){
 	if(mod == -1){
 		mod = MOD;
 	}
@@ -84,10 +84,10 @@ T binom(T n, T k, std::vector<T>& fact, std::vector<T>& invfact, T mod, T size=n
 		fact.resize(size + 1);
 		invfact.resize(size + 1);
 		fact[0] = 1;
-		for(int i = 1; i < factorial.size(); i++){
+		for(int i = 1; i < fact.size(); i++){
 			fact[i] = (fact[i - 1] * i) % mod;
 		}
-		invfact[size] = invMod(factorial[size]);
+		invfact[size] = invMod(fact[size]);
 		for(int i = size - 1; i >= 0; i--){
 			invfact[i] = invfact[i + 1] * (i + 1) % mod;
 		}
