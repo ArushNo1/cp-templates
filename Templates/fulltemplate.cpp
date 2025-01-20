@@ -21,6 +21,9 @@ typedef vector<bool> vb;
 #define endll '\n'
 
 #define all(x) (x).begin(), (x).end()
+#define maxeq(a, b) a = max<decltype(a)>(a, b)
+#define mineq(a, b) a = min<decltype(a)>(a, b)
+
 #define MOD ll(1e9+7)
 #define inf int(1e9+1)
 #define INF ll(1e18+1)
