@@ -8,6 +8,6 @@ public class ShortestPath {
      */
 
     /*
-     * Bellman-Ford (try to research)
+     * Bellman-Ford (Works with neg)
      */
 }

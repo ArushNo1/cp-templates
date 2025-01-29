@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class HashedString {
+class HashedString {
     private static final long M = 1_000_000_009L;  // Modulo value
     private static final long B = 9973;  // Base value
 
@@ -22,9 +22,9 @@ public class HashedString {
         }
     }
 
-    // Get the hash value for a substring from index 'start' to 'end' (inclusive)
+    // Get the hash value for a substring from index 'start' to 'end' (non-inclusive of end)
     public long getHash(int start, int end) {
-        long rawVal = (p_hash.get(end + 1) - (p_hash.get(start) * pow.get(end - start + 1))) % M;
+        long rawVal = (p_hash.get(end) - (p_hash.get(start) * pow.get(end - start + 1))) % M;
         return (rawVal + M) % M;  // Ensure non-negative result
     }
 

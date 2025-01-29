@@ -1,8 +1,8 @@
 import java.util.Objects;
 
-public class Pair<T extends Comparable<T>, U extends Comparable<U>> {
-    private T first;
-    private U second;
+class Pair<T extends Comparable<T>, U extends Comparable<U>> {
+    T first;
+    U second;
 
     // Constructor to initialize the pair
     public Pair(T first, U second) {
@@ -10,24 +10,14 @@ public class Pair<T extends Comparable<T>, U extends Comparable<U>> {
         this.second = second;
     }
 
-    // Getter for the first element
-    public T getFirst() {
-        return first;
-    }
-
-    // Getter for the second element
-    public U getSecond() {
-        return second;
-    }
-
     // Method to compare the first elements of the pair
     public int compareFirst(Pair<T, U> other) {
-        return this.first.compareTo(other.getFirst());
+        return this.first.compareTo(other.first);
     }
 
     // Method to compare the second elements of the pair
     public int compareSecond(Pair<T, U> other) {
-        return this.second.compareTo(other.getSecond());
+        return this.second.compareTo(other.second);
     }
 
     // Method to compare the whole pair lexicographically: first then second
@@ -42,11 +32,11 @@ public class Pair<T extends Comparable<T>, U extends Comparable<U>> {
     // Overriding equals() method
     @Override
     public boolean equals(Object obj) {
-        if (this == obj) {
-            return true;
-        }
         if (obj == null || getClass() != obj.getClass()) {
             return false;
+        }
+        if (this == obj) {
+            return true;
         }
         Pair<?, ?> other = (Pair<?, ?>) obj;
         return Objects.equals(first, other.first) && Objects.equals(second, other.second);

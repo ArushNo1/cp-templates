@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class DSU {
+class DSU {
     private final List<Integer> e;
 
     // Constructor to initialize the DSU with a size N
