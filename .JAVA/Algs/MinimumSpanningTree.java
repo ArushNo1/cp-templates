@@ -1,7 +1,7 @@
 
 import java.util.*;
 
-public class Prims {
+public class MinimumSpanningTree {
 
     /**
      * Function to compute the minimum spanning tree using Prim's Algorithm.
