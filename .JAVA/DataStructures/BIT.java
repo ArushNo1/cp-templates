@@ -1,4 +1,4 @@
-public class BIT<T extends Number> {
+class BIT<T extends Number> {
     private final int size;
     private final T[] bit;
     private final T[] arr;

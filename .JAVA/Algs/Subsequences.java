@@ -1,5 +1,5 @@
 
-public class Subsequences {
+class Subsequences {
 
     /**
      * Computes the Longest Common Subsequence (LCS) between two strings

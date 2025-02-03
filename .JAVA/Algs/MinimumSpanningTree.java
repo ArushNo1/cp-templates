@@ -1,7 +1,7 @@
 
 import java.util.*;
 
-public class MinimumSpanningTree {
+class MinimumSpanningTree {
 
     /**
      * Function to compute the minimum spanning tree using Prim's Algorithm.
@@ -10,14 +10,14 @@ public class MinimumSpanningTree {
      * @return The total cost of the minimum spanning tree, or -1 if the graph
      * is disconnected.
      */
-    public static long prim(List<List<Pair<Integer, Integer>>> neighbors) {
+    public static long prims(List<List<Pair<Integer, Integer>>> neighbors) {
         int n = neighbors.size();  // number of vertices
         long minCost = 0;
         long[] dist = new long[n];
         Arrays.fill(dist, Long.MAX_VALUE);  // Initialize distances to infinity
         dist[0] = 0;  // Start from vertex 0
         PriorityQueue<Pair<Integer, Integer>> q = new PriorityQueue<>(Comparator.comparingLong(p -> p.cost));
-        q.add(new Pair<Integer, Integer>(0, 0));  // (cost, vertex)
+        q.add(new Pair<Long, Integer>(0, 0));  // (cost, vertex)
         boolean[] visited = new boolean[n];
         int added = 0;
 
@@ -26,7 +26,7 @@ public class MinimumSpanningTree {
                 return -1;  // The graph is disconnected
             }
 
-            Pair<Integer, Integer> top = q.poll();
+            Pair<Long, Integer> top = q.poll();
             long currCost = top.cost;
             int v = top.vertex;
 
@@ -38,12 +38,12 @@ public class MinimumSpanningTree {
             visited[v] = true;
 
             minCost += currCost;
-            for (Pair<Integer, Integer> neighbor : neighbors.get(v)) {
+            for (Pair<Long, Integer> neighbor : neighbors.get(v)) {
                 int next = neighbor.vertex;
                 long nCost = neighbor.cost;
                 if (!visited[next] && nCost < dist[next]) {
                     dist[next] = nCost;
-                    q.add(new Pair<Integer, Integer>(nCost, next));  // Add the neighbor with updated cost
+                    q.add(new Pair<Long, Integer>(nCost, next));  // Add the neighbor with updated cost
                 }
             }
         }
@@ -51,69 +51,35 @@ public class MinimumSpanningTree {
         return minCost;
     }
 
-    public static class Pair<T extends Comparable<T>, U extends Comparable<U>> {
-
-        private T cost;
-        private U vertex;
-
-        // Constructor to initialize the pair
-        public Pair(T first, U second) {
-            this.cost = first;
-            this.vertex = second;
-        }
-
-        // Getter for the first element
-        public T getFirst() {
-            return cost;
-        }
-
-        // Getter for the second element
-        public U getSecond() {
-            return vertex;
-        }
-
-        // Method to compare the first elements of the pair
-        public int compareFirst(Pair<T, U> other) {
-            return this.cost.compareTo(other.getFirst());
-        }
-
-        // Method to compare the second elements of the pair
-        public int compareSecond(Pair<T, U> other) {
-            return this.vertex.compareTo(other.getSecond());
-        }
-
-        // Method to compare the whole pair lexicographically: first then second
-        public int compare(Pair<T, U> other) {
-            int firstComparison = this.compareFirst(other);
-            if (firstComparison != 0) {
-                return firstComparison;
+    /**
+     * Kruskal's algorithm to compute the total weight of a minimum spanning tree (MST).
+     *
+     * @param n     Number of nodes.
+     * @param edges List of edges, where each edge is represented as an Edge object.
+     * @return The total weight of the MST.
+     */
+    public static int kruskals(int n, List<Edge> edges) {
+        //REQUIRES DSU
+        Collections.sort(edges, Comparator.comparingInt(e -> e.weight));
+        DSU uf = new DSU(n);
+        int mstWeight = 0;
+        for (Edge edge : edges) {
+            if (uf.union(edge.u, edge.v)) {
+                mstWeight += edge.weight;
             }
-            return this.compareSecond(other);
         }
-
-        // Overriding equals() method
-        @Override
-        public boolean equals(Object obj) {
-            if (this == obj) {
-                return true;
-            }
-            if (obj == null || getClass() != obj.getClass()) {
-                return false;
-            }
-            Pair<?, ?> other = (Pair<?, ?>) obj;
-            return Objects.equals(cost, other.cost) && Objects.equals(vertex, other.vertex);
-        }
-
-        // Overriding hashCode() method
-        @Override
-        public int hashCode() {
-            return Objects.hash(cost, vertex);
-        }
-
-        @Override
-        public String toString() {
-            return "(" + cost + ", " + vertex + ")";
+        return mstWeight;
+    }
+    
+    public static class Edge {
+        public int u, v, weight;
+        public Edge(int u, int v, int weight) {
+            this.u = u;
+            this.v = v;
+            this.weight = weight;
         }
     }
+
+    
 
 }
