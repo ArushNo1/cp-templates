@@ -17,6 +17,10 @@ class SegmentTreeNode {
         this.left = null;
         this.right = null;
     }
+
+    public static int operation(SegmentTreeNode left, SegmentTreeNode right) {
+        return left.sum + right.sum;
+    }
 }
 
 // Segment Tree Class
@@ -48,7 +52,7 @@ class SegmentTree {
             node.right = buildTree(nums, mid + 1, end);
 
             // Combine values from children
-            node.sum = node.left.sum + node.right.sum;
+            node.sum = SegmentTreeNode.operation(node.left, node.right);
         }
         return node;
     }
@@ -90,7 +94,7 @@ class SegmentTree {
             }
 
             // Recalculate sum
-            node.sum = node.left.sum + node.right.sum;
+            node.sum = SegmentTreeNode.operation(node.left, node.right);
         }
     }
 }
