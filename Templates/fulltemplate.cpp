@@ -60,7 +60,7 @@ inline void open(string name){
 #ifndef dbg
 #define dbg(x) cerr << __LINE__ << ": " << #x << "=" << x << endl;
 //edit for specific DS
-#include <alldebug.h>
+#include "cp-templates/Debugging/alldebug.h"
 #endif
 
 void solve(int num_tc)
