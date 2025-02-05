@@ -1,3 +1,6 @@
+#ifndef SETDBG_H
+#define SETDBG_H
+
 template <typename T>
 ostream& operator<< (ostream& os, const set<T>& arr){
 	os << "[";
@@ -27,3 +30,4 @@ ostream& operator<< (ostream& os, const unordered_set<T>& arr){
     os << "]";
     return os;
 }
+#endif
