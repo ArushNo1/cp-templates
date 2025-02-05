@@ -18,11 +18,6 @@ ostream& operator<<(ostream& os, const vector<vector<T>>& grid) {
     return os;
 }
 
-template <typename T, typename U>
-ostream& operator<< (ostream& os, const pair<T, U>& x){
-    os << "(" << x.first << ", " << x.second << ")";
-    return os;
-}
 
 template <typename T, typename U>
 ostream& operator<< (ostream& os, const vector<pair<T, U>>& arr){
