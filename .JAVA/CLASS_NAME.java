@@ -44,7 +44,7 @@ public class CLASS_NAME {
         }
     }
 
-    public static Scanner sc = new Scanner(System.in);
+    public static FastReader sc = new FastReader();
     public static DecimalFormat round = new DecimalFormat("#.00");
     public static double EPS = 1e-6;
     public static int MOD = (int) (1e9 + 7);
