@@ -21,8 +21,6 @@ typedef vector<bool> vb;
 #define endll '\n'
 
 #define all(x) (x).begin(), (x).end()
-#define maxeq(a, b) a = max<decltype(a)>(a, b)
-#define mineq(a, b) a = min<decltype(a)>(a, b)
 
 #define MOD ll(1e9+7)
 #define inf int(1e9+1)
@@ -34,24 +32,6 @@ inline void fillv(vector<T>& v, int n) {
     for (int i = 0; i < n; ++i) {
         std::cin >> v[i];
     }
-}
-template <typename T, typename U>
-inline void fillv(vector<pair<T, U>>& v, int n, bool inv = false){
-	if(inv){
-		for(int i = 0 ; i < n; ++i){
-			cin >> v[i].second >> v[i].first;
-		}
-		return;
-	}
-	for (int i = 0; i < n; ++i) {
-        cin >> v[i].first >> v[i].second;
-    }
-	return;
-}
-
-inline void open(string name){
-    freopen((name + ".in").c_str(), "r", stdin);
-	freopen((name + ".out").c_str(), "w", stdout);
 }
 
 //comment to enable debugging
