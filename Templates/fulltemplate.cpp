@@ -34,6 +34,11 @@ inline void fillv(vector<T>& v, int n) {
     }
 }
 
+inline void open(string name){
+    freopen((name + ".in").c_str(), "r", stdin);
+    freopen((name + ".out").c_str(), "w", stdout);
+}    
+
 //comment to enable debugging
 #define dbg(x)
 
