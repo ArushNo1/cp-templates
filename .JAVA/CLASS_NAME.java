@@ -55,6 +55,11 @@ public class CLASS_NAME {
         int lineNumber = Thread.currentThread().getStackTrace()[2].getLineNumber();
         System.err.println(lineNumber + ": " + varName + " = " + value);
     }
+    public static void dbg(String varName, Object[] arr){
+        int lineNumber = Thread.currentThread().getStackTrace()[2].getLineNumber();
+        System.err.println(lineNumber + ": " + varName + " = " + Arrays.toString(arr));
+    }
+
 
     public static void solve(int num_tc) {
 

@@ -1,6 +1,7 @@
-map<int, int> prime_factorize_map(int n) {
-    map<int, int> ret;
-    for (int i = 2; i * i <= n; i++) {
+template<typename T>
+map<T, int> prime_factorize_map(T n) {
+    map<T, int> ret;
+    for (T i = 2; i * i <= n; i++) {
         while (n % i == 0) {
             ret[i]++;
             n /= i;
@@ -10,9 +11,10 @@ map<int, int> prime_factorize_map(int n) {
     return ret;
 }
 
-vector<int> prime_factorize_vector(int n) {
-    vector<int> ret;
-    for (int i = 2; i * i <= n; i++) {
+template <typename T>
+vector<T> prime_factorize_vector(T n) {
+    vector<T> ret;
+    for (T i = 2; i * i <= n; i++) {
         while (n % i == 0) {
             ret.push_back(i);
             n /= i;
