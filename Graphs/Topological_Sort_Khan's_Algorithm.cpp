@@ -5,7 +5,7 @@
 //Output: sorted order of nodes
 bool topSort(vector<ll>& sorted, vector<unordered_set<ll>>& adjList, vector<unordered_set<ll>>& radjList)
 {
-	int N = sz(adjList);
+	int N = adjList.size();
 	vector<ll> noEdge{};
 	
 	for(ll i = 0; i < N; i++)
@@ -33,6 +33,6 @@ bool topSort(vector<ll>& sorted, vector<unordered_set<ll>>& adjList, vector<unor
 	{
 		possible = possible && adjList[i].empty();
 	}
-	
+	reverse(all(sorted));
 	return possible;
 }
