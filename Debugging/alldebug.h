@@ -1,6 +1,10 @@
 #ifndef ALLDEBUG_H
 #define ALLDEBUG_H
 
+#ifndef ARRAYDBG_H
+#include "arraydbg.h"
+#endif
+
 #ifndef PAIRDBG_H
 #include "pairdbg.h"
 #endif
@@ -19,10 +23,6 @@
 
 #ifndef PQUEUEDBG_H
 #include "priorityqueuedbg.h"
-#endif
-
-#ifndef ARRAYDBG_H
-#include "arraydbg.h"
 #endif
 
 #endif // ALLDEBUG_H
