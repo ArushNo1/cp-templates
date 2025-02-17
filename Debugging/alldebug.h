@@ -21,4 +21,8 @@
 #include "priorityqueuedbg.h"
 #endif
 
+#ifndef ARRAYDBG_H
+#include "arraydbg.h"
+#endif
+
 #endif // ALLDEBUG_H
