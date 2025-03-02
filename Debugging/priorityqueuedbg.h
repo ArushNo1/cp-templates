@@ -31,4 +31,19 @@ std::ostream& operator<<(std::ostream& os, const std::stack<T>& st) {
     return os;
 }
 
+template <typename T>
+std::ostream& operator<<(std::ostream& os, const std::queue<T>& q) {
+    std::queue<T> copy = q;
+    os << "[";
+    bool first = true;
+    while (!copy.empty()) {
+        if (!first) os << ", ";
+        os << copy.front();
+        copy.pop();
+        first = false;
+    }
+    os << "]";
+    return os;
+}
+
 #endif

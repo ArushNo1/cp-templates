@@ -45,6 +45,7 @@ public class CLASS_NAME {
     }
 
     public static FastReader sc = new FastReader();
+    public static StringBuilder out = new StringBuilder();
     public static DecimalFormat round = new DecimalFormat("#.00");
     public static double EPS = 1e-6;
     public static int MOD = (int) (1e9 + 7);
@@ -71,5 +72,6 @@ public class CLASS_NAME {
         for (int T = 0; T < t; T++) {
             solve(T + 1);
         }
+        System.out.println(out.toString());
     }
 }
