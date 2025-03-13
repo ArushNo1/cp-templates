@@ -32,7 +32,7 @@ public class CLASS_NAME {
         String nextLine() {
             String str = "";
             try {
-                if (s.hasMoreTokens()) {
+                if (s != null && s.hasMoreTokens()) {
                     str = s.nextToken("\n");
                 } else {
                     str = b.readLine();
