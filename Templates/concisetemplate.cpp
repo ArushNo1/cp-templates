@@ -4,7 +4,7 @@ using namespace std;
 
 typedef long long ll;
 #define endll '\n'
-#define dbg(x) cerr << #x << " = " << x << endll;
+
     
 inline void open(string name){
     freopen((name + ".in").c_str(), "r", stdin);
