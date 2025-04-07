@@ -11,12 +11,9 @@ tree_order_statistics_node_update> indexed_set;
 
 typedef vector<int> vi;
 typedef vector<vi> vvi;
-typedef pair<int, int> ii;
 typedef long long ll;
 typedef vector<ll> vll;
-typedef long double ld;
 typedef pair<ll, ll> pll;
-typedef vector<bool> vb;
 
 #define endll '\n'
 
@@ -25,7 +22,6 @@ typedef vector<bool> vb;
 #define MOD ll(1e9+7)
 #define inf int(1e9+1)
 #define INF ll(1e18+1)
-#define EPS ld(1e-9)
 
 template <typename T>
 inline void fillv(vector<T>& v, int n) {
