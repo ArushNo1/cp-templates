@@ -23,4 +23,14 @@ ostream& operator<<(ostream& os, const vector<vector<T>>& grid) {
     return os;
 }
 
+//for deque debug
+template <typename T>
+ostream& operator<<(ostream& os, const deque<T> arr) {
+    os << "[";
+    for (size_t i = 0; i < arr.size(); ++i) {
+        os << arr[i] + 1 << " ";
+    }
+    os << "]";
+    return os;
+}
 #endif
