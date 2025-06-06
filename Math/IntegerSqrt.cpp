@@ -5,7 +5,7 @@
  * @return The integer square root
  */
 ll isqrt(ll n){
-    ll low = 0, high = n;
+    ll low = 0, high = min(n, (ll)1e9 + 1);
     while(low < high){
         ll mid = low + (high - low + 1) / 2;
         ll mid2 = mid * mid;
