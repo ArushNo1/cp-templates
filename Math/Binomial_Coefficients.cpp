@@ -110,3 +110,15 @@ T binom(T n, T k){
     }
 	return value;
 }
+
+
+/*calculate a binomial coefficient mod 2*/
+int binom2(int n, int k) {
+	if(k > n) {
+		return 0;
+	}
+	if(k == 0 || k == n) {
+		return 1;
+	}
+	return (k & (~n)) == 0 ? 1 : 0;
+}
