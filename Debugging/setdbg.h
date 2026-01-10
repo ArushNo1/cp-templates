@@ -31,6 +31,7 @@ ostream& operator<< (ostream& os, const unordered_set<T>& arr){
     return os;
 }
 
+#ifdef indexed_set
 ostream& operator<<(ostream& os, const indexed_set& s) {
     os << "{";
     bool first = true;
@@ -42,4 +43,5 @@ ostream& operator<<(ostream& os, const indexed_set& s) {
     os << "}";
     return os;
 }
+#endif
 #endif
