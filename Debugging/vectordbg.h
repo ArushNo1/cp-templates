@@ -28,7 +28,7 @@ template <typename T>
 ostream& operator<<(ostream& os, const deque<T> arr) {
     os << "[";
     for (size_t i = 0; i < arr.size(); ++i) {
-        os << arr[i] + 1 << " ";
+        os << arr[i] << " ";
     }
     os << "]";
     return os;
