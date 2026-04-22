@@ -4,3 +4,6 @@ ll invMod(ll x) {
   }
   return MOD - MOD / x * invMod(MOD % x) % MOD;
 }
+ll invMod(ll x){
+  return binExp(x, MOD - 2);
+}

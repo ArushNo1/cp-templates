@@ -1,5 +1,6 @@
 
 import java.io.*;
+import java.lang.reflect.Array;
 import java.text.DecimalFormat;
 import java.util.*;
 
@@ -51,6 +52,7 @@ public class CLASS_NAME {
     public static int MOD = (int) (1e9 + 7);
     public static int[] dx = {0, 0, 1, -1};
     public static int[] dy = {1, -1, 0, 0};
+    public static String endll = "\n";
 
     public static void dbg(String varName, Object value) {
         int lineNumber = Thread.currentThread().getStackTrace()[2].getLineNumber();
@@ -61,9 +63,15 @@ public class CLASS_NAME {
         System.err.println(lineNumber + ": " + varName + " = " + Arrays.toString(arr));
     }
 
+    public static <T> void fillv(ArrayList<T> arr, int n, java.util.function.Function<String, T> parser) {
+        for (int i = 0; i < n; i++) {
+            arr.add(parser.apply(sc.next()));
+        }
+    }
+
 
     public static void solve(int num_tc) {
-
+        
     }
 
     public static void main(String[] args) {

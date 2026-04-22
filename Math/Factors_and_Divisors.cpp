@@ -13,19 +13,6 @@ vector<ll> factorsPrimes(ll n, vector<ll> &primes) {
     return factorization;
 }
 
-vector<int> factor(int n) {
-	vector<int> ret;
-	for (int i = 2; i * i <= n; i++) {
-		while (n % i == 0) {
-			ret.push_back(i);
-			n /= i;
-		}
-	}
-
-	if (n > 1) { ret.push_back(n); }
-	return ret;
-}
-
 long long numberOfDivisors(long long num) {
     long long total = 1;
     for (int i = 2; (long long)i * i <= num; i++) {
